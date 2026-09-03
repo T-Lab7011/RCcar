@@ -1,49 +1,49 @@
-# ESP32 RC Car Code
+# ESP32 RC Car プログラム
 
-The [`esp32_rccar/esp32_rccar.ino`](esp32_rccar/esp32_rccar.ino) sketch turns an ESP32 into a Wi-Fi access point and hosts a browser-based RC car controller. It controls two motors through a DRV8833 motor driver and one steering servo.
+[`esp32_rccar/esp32_rccar.ino`](esp32_rccar/esp32_rccar.ino) は、ESP32をWi-Fiアクセスポイントとして動作させ、ブラウザ用のRCカー操作画面を配信するプログラムです。DRV8833経由で2つのモーターを制御し、サーボモーターでステアリングを操作します。
 
-## Requirements
+## 必要な環境
 
-- An ESP32-compatible board
-- Arduino IDE or Arduino CLI
-- **esp32 by Espressif Systems** board package (compiled successfully with version 3.3.8)
-- **ESP32Servo** library (compiled successfully with version 3.2.1)
+- ESP32対応ボード
+- Arduino IDE または Arduino CLI
+- **esp32 by Espressif Systems** ボードパッケージ（3.3.8でコンパイル確認済み）
+- **ESP32Servo** ライブラリ（3.2.1でコンパイル確認済み）
 
-`WiFi.h` and `WebServer.h` are supplied by the ESP32 board package.
+`WiFi.h` と `WebServer.h` はESP32ボードパッケージに含まれています。
 
-## Pin Assignments
+## ピン配置
 
-| Function | ESP32 pin |
+| 用途 | ESP32ピン |
 | --- | ---: |
 | DRV8833 AIN1 | GPIO 25 |
 | DRV8833 AIN2 | GPIO 33 |
 | DRV8833 BIN1 | GPIO 27 |
 | DRV8833 BIN2 | GPIO 14 |
-| Steering servo signal | GPIO 32 |
+| ステアリングサーボ信号 | GPIO 32 |
 
-Confirm that these assignments match your wiring before applying power. The motor outputs use 20 kHz, 8-bit PWM. The servo is centered at 90 degrees and constrained from 40 to 150 degrees.
+モーター出力は20 kHz・8 bit PWMです。サーボの中央位置は90度、可動範囲は40～150度に設定されています。電源を入れる前に、実際の配線とピン配置が一致していることを確認してください。
 
-## Upload and Use
+## 書き込みと操作
 
-1. Install the ESP32 board package in Arduino IDE's Boards Manager.
-2. Install `ESP32Servo` in the Library Manager.
-3. Open [`esp32_rccar/esp32_rccar.ino`](esp32_rccar/esp32_rccar.ino).
-4. Select the board definition that matches your ESP32. The sketch has been compiled successfully using the generic **ESP32 Dev Module** definition.
-5. Check the pin assignments and upload the sketch.
-6. Connect a phone or computer to the Wi-Fi network shown below.
-7. Open `http://192.168.4.1/` in a browser.
+1. Arduino IDEのボードマネージャーでESP32ボードパッケージをインストールします。
+2. ライブラリマネージャーで `ESP32Servo` をインストールします。
+3. [`esp32_rccar/esp32_rccar.ino`](esp32_rccar/esp32_rccar.ino) を開きます。
+4. 使用するESP32に合うボードを選びます。汎用の **ESP32 Dev Module** 設定でコンパイルを確認しています。
+5. ピン配置を確認して、ESP32へ書き込みます。
+6. スマートフォンまたはPCを次のWi-Fiへ接続します。
+7. ブラウザで `http://192.168.4.1/` を開きます。
 
-## Default Wi-Fi Settings
+## 初期Wi-Fi設定
 
-| Setting | Default value |
+| 項目 | 初期値 |
 | --- | --- |
-| Network name (SSID) | `ESP32_RC_CAR` |
-| Password | `12345678` |
+| Wi-Fi名（SSID） | `ESP32_RC_CAR` |
+| パスワード | `12345678` |
 
-These values are defined near the top of the sketch. Change the password before using the car in a public or shared location.
+SSIDとパスワードは、プログラム冒頭の `ssid` と `password` で変更できます。
 
-## Safety Notes
+## 安全上の注意
 
-- Raise the drive wheels off the ground for the first test.
-- Verify the motor driver, servo power, grounds, and supply voltage before switching the car on.
-- The program stops the motors if drive commands are interrupted for more than 400 ms, but this software safeguard is not a substitute for safe testing.
+- 初回動作確認は、駆動輪を地面から浮かせた状態で行ってください。
+- 電源を入れる前に、モータードライバー、サーボ電源、GND、電源電圧を確認してください。
+- 走行指令が400 ms以上途切れるとモーターは停止しますが、この機能だけに頼らず安全な環境でテストしてください。

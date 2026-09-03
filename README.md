@@ -1,102 +1,59 @@
-# Arduino RC Car — Project Resources
+# ESP32 RC Car
 
-## Project Overview
+ESP32で操作するRCカーの公開データです。スマートフォンやPCをESP32のWi-Fiへ接続し、ブラウザから前進・後退・ステアリング操作ができます。
 
-This repository is the companion resource for an ESP32 RC car project shared on YouTube. It contains the ESP32 control program and 3D-printable STL files. A wiring diagram, parts list, photos, and detailed assembly instructions are still being prepared.
+## 公開内容
 
-Any information that has not yet been confirmed is clearly marked **TODO** rather than filled in with untested details.
+- [`code/`](code/) — ESP32用プログラムと導入手順
+- [`stl/`](stl/) — 3Dプリント用STLファイル19点
 
-## Completed Image
+## 主な機能
 
-> **TODO:** Add a photo of the completed RC car to the [`images/`](images/) folder, then display it here.
+- ESP32をWi-Fiアクセスポイントとして使用
+- スマートフォン・PCのブラウザから操作
+- 前進・後退の速度を無段階で調整
+- 左右のステアリング角度を無段階で調整
+- 緊急停止ボタン
+- 通信が400 ms以上途切れた場合にモーターを停止する安全機能
 
-## YouTube Video
+## プログラム
 
-> **TODO:** Add the YouTube video title, thumbnail, and link after the video is published.
+プログラム本体：[`code/esp32_rccar/esp32_rccar.ino`](code/esp32_rccar/esp32_rccar.ino)
 
-## Features
+### 必要な環境
 
-The included ESP32 program provides:
+- ESP32対応ボード
+- Arduino IDE または Arduino CLI
+- **esp32 by Espressif Systems** ボードパッケージ
+- **ESP32Servo** ライブラリ
 
-- A self-hosted Wi-Fi access point and browser-based controller
-- Proportional forward and reverse speed control
-- Proportional left and right steering control
-- An emergency-stop button
-- A 400 ms drive-command watchdog that stops the motors if commands are interrupted
+ESP32 Arduino core 3.3.8、ESP32Servo 3.2.1、汎用の **ESP32 Dev Module** 設定でコンパイルを確認しています。
 
-## Parts List
+詳しい導入手順とピン配置は [`code/README.md`](code/README.md) を参照してください。
 
-The parts list will be available in the [`parts/`](parts/) folder.
+### 接続方法
 
-> **TODO:** Add the exact parts and quantities after they have been confirmed.
+1. ESP32へプログラムを書き込みます。
+2. スマートフォンまたはPCを次のWi-Fiへ接続します。
+3. ブラウザで `http://192.168.4.1/` を開きます。
 
-| Part | Quantity | Notes | Link (optional) |
-| --- | ---: | --- | --- |
-| TODO | TODO | TODO | TODO |
+| 項目 | 初期値 |
+| --- | --- |
+| Wi-Fi名（SSID） | `ESP32_RC_CAR` |
+| パスワード | `12345678` |
 
-Do not order parts from this table until the confirmed list has been added.
+## STLファイル
 
-## Arduino Code
+RCカー用のSTLファイル19点を [`stl/`](stl/) で公開しています。ファイル一覧は [`stl/README.md`](stl/README.md) を参照してください。
 
-The ESP32 sketch is available at [`code/esp32_rccar/esp32_rccar.ino`](code/esp32_rccar/esp32_rccar.ino). See [`code/README.md`](code/README.md) for dependencies, pin assignments, upload instructions, and connection details.
+造形方向、サポート、積層ピッチ、インフィルなどの印刷設定は含まれていません。印刷前に各モデルをスライサーで確認してください。
 
-The sketch has been successfully compiled for the generic ESP32 development board with ESP32 Arduino core 3.3.8 and ESP32Servo 3.2.1.
+## 安全上の注意
 
-## STL Files
+- 初回動作確認は、駆動輪を地面から浮かせた状態で行ってください。
+- 電源を入れる前に、モータードライバー、サーボ電源、GND、電源電圧を確認してください。
+- 通信断時の自動停止機能は、実機を安全に扱うための確認作業に代わるものではありません。
 
-The 19 provided 3D-printable files are available in the [`stl/`](stl/) folder. See [`stl/README.md`](stl/README.md) for the complete file list.
-
-> **TODO:** Add confirmed print settings, including material, orientation, supports, layer height, and infill where relevant.
-
-## Wiring Diagram
-
-The wiring diagram and related images will be placed in the [`wiring/`](wiring/) folder.
-
-> **TODO:** Add a verified wiring diagram and a beginner-friendly connection table. Check all connections before powering the car.
-
-## How to Build
-
-Detailed assembly instructions will be added here after the design and build order have been verified.
-
-1. **Prepare the parts** — TODO: Add the confirmed parts checklist.
-2. **Print the components** — Download the files from [`stl/`](stl/). TODO: Add tested print settings and post-processing instructions.
-3. **Assemble the chassis** — TODO: Add the verified assembly order and photos.
-4. **Connect the electronics** — TODO: Add step-by-step instructions that match the final wiring diagram.
-5. **Upload the code** — Follow the instructions in [`code/README.md`](code/README.md).
-6. **Test the car** — TODO: Add a safe first-start procedure and functional checks.
-
-## Common Problems
-
-> **TODO:** Add solutions after the completed build has been tested. Include the exact symptoms, likely causes, and safe checks for each issue.
-
-Suggested topics to document:
-
-- The Arduino code does not upload
-- The car does not power on
-- A motor does not move or moves in the wrong direction
-- Steering or remote control does not respond
-- A printed part does not fit
-
-These are troubleshooting categories only; project-specific solutions have not yet been added.
-
-## Need Help?
-
-If you're building this project, or another electronics or robotics project, and something isn't working as expected, feel free to contact me.
+## お問い合わせ
 
 Instagram: [@takeru_robot](https://www.instagram.com/takeru_robot/)
-
-I'm currently trying out a free, text-based troubleshooting session for makers. If you get stuck, feel free to reach out and tell me what you're building, what you expected to happen, and what happened instead.
-
-## Repository Structure
-
-```text
-code/     Arduino code and setup notes
-stl/      3D-printable model files and print settings
-wiring/   Wiring diagrams and connection information
-images/   Completed-build and assembly photos
-parts/    Parts list and sourcing notes
-```
-
-## Project Status
-
-The ESP32 program and STL files are available. The wiring diagram, parts list, photos, print settings, and full build instructions remain in progress. Sections marked **TODO** will be updated as those resources are verified.
