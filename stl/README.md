@@ -1,15 +1,15 @@
-# STLファイル
+# STL Files
 
-RCカー用の3Dプリントデータ19点です。
+This folder contains 19 3D-printable parts for the RC car.
 
-## ボディ・取付部品
+## Body and Mounting Parts
 
 - [`Body_1.stl`](Body_1.stl)
 - [`Body_2.stl`](Body_2.stl)
 - [`FrontParts.stl`](FrontParts.stl)
 - [`ServoHolder.stl`](ServoHolder.stl)
 
-## 駆動部品
+## Drivetrain Parts
 
 - [`Gear_1.stl`](Gear_1.stl)
 - [`Gear_2.stl`](Gear_2.stl)
@@ -19,7 +19,7 @@ RCカー用の3Dプリントデータ19点です。
 - [`WheelAttachment_1.stl`](WheelAttachment_1.stl)
 - [`WheelAttachment_2.stl`](WheelAttachment_2.stl)
 
-## 装飾部品
+## Decorative Parts
 
 - [`Decoration_1.stl`](Decoration_1.stl)
 - [`Decoration_2.stl`](Decoration_2.stl)
@@ -30,6 +30,6 @@ RCカー用の3Dプリントデータ19点です。
 - [`Decoration_7.stl`](Decoration_7.stl)
 - [`Decoration_8.stl`](Decoration_8.stl)
 
-## 印刷について
+## Printing
 
-造形方向、サポート、積層ピッチ、インフィル、必要個数などの印刷設定は含まれていません。印刷前に各モデルをスライサーで確認してください。
+Print orientation, supports, layer height, infill, quantity, and other print settings are not included. Check each model in your slicer before printing.

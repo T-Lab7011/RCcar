@@ -1,59 +1,59 @@
 # ESP32 RC Car
 
-ESP32で操作するRCカーの公開データです。スマートフォンやPCをESP32のWi-Fiへ接続し、ブラウザから前進・後退・ステアリング操作ができます。
+This repository contains the public files for an ESP32-controlled RC car. Connect a phone or computer to the ESP32's Wi-Fi network to control forward and reverse motion and steering from a web browser.
 
-## 公開内容
+## Contents
 
-- [`code/`](code/) — ESP32用プログラムと導入手順
-- [`stl/`](stl/) — 3Dプリント用STLファイル19点
+- [`code/`](code/) — ESP32 program and setup instructions
+- [`stl/`](stl/) — 19 STL files for 3D printing
 
-## 主な機能
+## Features
 
-- ESP32をWi-Fiアクセスポイントとして使用
-- スマートフォン・PCのブラウザから操作
-- 前進・後退の速度を無段階で調整
-- 左右のステアリング角度を無段階で調整
-- 緊急停止ボタン
-- 通信が400 ms以上途切れた場合にモーターを停止する安全機能
+- ESP32-hosted Wi-Fi access point
+- Browser-based control from a phone or computer
+- Proportional forward and reverse speed control
+- Proportional left and right steering control
+- Emergency-stop button
+- Motor safety stop if drive commands are interrupted for more than 400 ms
 
-## プログラム
+## Program
 
-プログラム本体：[`code/esp32_rccar/esp32_rccar.ino`](code/esp32_rccar/esp32_rccar.ino)
+Sketch: [`code/esp32_rccar/esp32_rccar.ino`](code/esp32_rccar/esp32_rccar.ino)
 
-### 必要な環境
+### Requirements
 
-- ESP32対応ボード
-- Arduino IDE または Arduino CLI
-- **esp32 by Espressif Systems** ボードパッケージ
-- **ESP32Servo** ライブラリ
+- ESP32-compatible board
+- Arduino IDE or Arduino CLI
+- **esp32 by Espressif Systems** board package
+- **ESP32Servo** library
 
-ESP32 Arduino core 3.3.8、ESP32Servo 3.2.1、汎用の **ESP32 Dev Module** 設定でコンパイルを確認しています。
+The sketch has been compiled successfully with ESP32 Arduino core 3.3.8, ESP32Servo 3.2.1, and the generic **ESP32 Dev Module** board definition.
 
-詳しい導入手順とピン配置は [`code/README.md`](code/README.md) を参照してください。
+See [`code/README.md`](code/README.md) for detailed setup instructions and pin assignments.
 
-### 接続方法
+### Connecting to the Car
 
-1. ESP32へプログラムを書き込みます。
-2. スマートフォンまたはPCを次のWi-Fiへ接続します。
-3. ブラウザで `http://192.168.4.1/` を開きます。
+1. Upload the program to the ESP32.
+2. Connect a phone or computer to the Wi-Fi network shown below.
+3. Open `http://192.168.4.1/` in a web browser.
 
-| 項目 | 初期値 |
+| Setting | Default value |
 | --- | --- |
-| Wi-Fi名（SSID） | `ESP32_RC_CAR` |
-| パスワード | `12345678` |
+| Network name (SSID) | `ESP32_RC_CAR` |
+| Password | `12345678` |
 
-## STLファイル
+## STL Files
 
-RCカー用のSTLファイル19点を [`stl/`](stl/) で公開しています。ファイル一覧は [`stl/README.md`](stl/README.md) を参照してください。
+The 19 STL files are available in [`stl/`](stl/). See [`stl/README.md`](stl/README.md) for the complete file list.
 
-造形方向、サポート、積層ピッチ、インフィルなどの印刷設定は含まれていません。印刷前に各モデルをスライサーで確認してください。
+Print orientation, supports, layer height, infill, and other print settings are not included. Check each model in your slicer before printing.
 
-## 安全上の注意
+## Safety Notes
 
-- 初回動作確認は、駆動輪を地面から浮かせた状態で行ってください。
-- 電源を入れる前に、モータードライバー、サーボ電源、GND、電源電圧を確認してください。
-- 通信断時の自動停止機能は、実機を安全に扱うための確認作業に代わるものではありません。
+- Raise the drive wheels off the ground for the first test.
+- Verify the motor driver, servo power, grounds, and supply voltage before switching the car on.
+- The communication watchdog is an additional safeguard and is not a substitute for testing the car in a safe environment.
 
-## お問い合わせ
+## Contact
 
 Instagram: [@takeru_robot](https://www.instagram.com/takeru_robot/)
